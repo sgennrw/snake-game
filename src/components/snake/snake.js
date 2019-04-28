@@ -1,26 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Rect } from 'react-konva';
+import { Group, Rect } from 'react-konva';
 import { ITEM_SIZE } from '../../constants';
-import { randomLocation } from '../../utils';
 
 const props = {
-    changeDirection: PropTypes.func.isRequired,
+    snakePos: PropTypes.array.isRequired,
 };
 
 const Snake = props => {
-    const { changeDirection } = props;
+    const { snakePos } = props;
 
-    const rect = () => (
-        <Rect
-            x={randomLocation()} y={randomLocation()} width={ITEM_SIZE} height={ITEM_SIZE}
-            fill="gray"
-        />
+    const renderSnake = () => {
+        return snakePos.map((snake, index) => {
+            return (
+                <Rect
+                    key={`snake-${index}`}
+                    x={snake.x} y={snake.y} width={ITEM_SIZE} height={ITEM_SIZE}
+                    fill="gray"
+                />
+            );
+        });
+    }
+
+    return (
+        <Group>
+            {renderSnake()}
+        </Group>
     )
-    changeDirection('key');
-    return ( 
-        rect()
-    );
 };
 
 Snake.propTypes = props;

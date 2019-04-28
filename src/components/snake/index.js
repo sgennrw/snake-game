@@ -1,11 +1,10 @@
 import { connect } from 'react-redux'
 import Snake from './snake';
-import { changeDirectionRequest } from '../../services/snakeService/actions';
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
     return {
-        changeDirection: key => dispatch(changeDirectionRequest(key)),
+       snakePos: state.snakeServiceReducer.snakePos,
     }
 }
 
-export default connect(null, mapDispatchToProps)(Snake);
+export default connect(mapStateToProps, null)(Snake);

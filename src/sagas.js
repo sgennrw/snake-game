@@ -1,10 +1,8 @@
-import { takeLatest } from 'redux-saga/effects';
-import * as snakeActionTypes from './services/snakeService/actionTypes';
-import * as snakeWorkers from './services/snakeService/workers';
+import { all } from 'redux-saga/effects';
+import watcherSaga from './services/snakeService/index';
 
 export default function* rootSaga() {
-  yield takeLatest(
-    snakeActionTypes.CHANGE_DIRECTION_REQUEST,
-    snakeWorkers.watchChangeDirectionRequest,
-  );
+  yield all([
+    watcherSaga(),
+  ]);
 }

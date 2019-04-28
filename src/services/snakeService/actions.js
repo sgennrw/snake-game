@@ -3,13 +3,20 @@ import * as actionTypes from './actionTypes';
 export const changeDirectionRequest = key => {
     return {
         type: actionTypes.CHANGE_DIRECTION_REQUEST,
-        key
+        key,
     }
 };
 
-export const changeDirectionSuccess = key => {
+export const changeDirectionSuccess = (key, snakePos) => {
     return {
         type: actionTypes.CHANGE_DIRECTION_SUCCESS,
-        key
+        key,
+        snakePos,
     }
 };
+
+export const changeDirectionFailure = () => {
+    return {
+        type: actionTypes.CHANGE_DIRECTION_FAILURE,
+    }
+}
