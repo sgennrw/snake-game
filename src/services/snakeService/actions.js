@@ -20,3 +20,9 @@ export const changeDirectionFailure = () => {
         type: actionTypes.CHANGE_DIRECTION_FAILURE,
     }
 }
+
+export const eatFood = () => {
+    return {
+        type: actionTypes.EAT_FOOD,
+    }
+}
