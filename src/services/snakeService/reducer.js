@@ -7,12 +7,13 @@ const initialState = {
     snakePos: [
         {x: randomLocation(), y: randomLocation()}
     ],
-    foodPos: {x: randomLocation(), y: randomLocation()}
+    foodPos: {x: randomLocation(), y: randomLocation()},
+    isGameOver: false,
 };
 
 const snakeServiceReducer = (state = initialState, action) => {
     switch(action.type) {
-        case actionTypes.CHANGE_DIRECTION_SUCCESS:
+        case actionTypes.MOVE_SUCCESS:
             return {
                 ...state,
                 key: action.key,
@@ -22,6 +23,16 @@ const snakeServiceReducer = (state = initialState, action) => {
             return {
                 ...state,
                 foodPos: {x: randomLocation(), y: randomLocation()},
+            }
+        case actionTypes.GROW_UP:
+            return {
+                ...state,
+                snakePos: action.snakePos,
+            }
+        case actionTypes.DIE:
+            return {
+                ...state,
+                isGameOver: true,
             }
         default:
             return state

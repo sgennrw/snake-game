@@ -12,7 +12,7 @@ const Food = props => {
 
     return (
         <Rect
-            x={foodPos.x} y={foodPos.y} width={ITEM_SIZE} height={ITEM_SIZE}
+            x={foodPos.x} y={foodPos.y} width={ITEM_SIZE} height={ITEM_SIZE} stroke="black"
             fill="red"
         />
     );

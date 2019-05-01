@@ -15,7 +15,7 @@ const Snake = props => {
             return (
                 <Rect
                     key={`snake-${index}`}
-                    x={snake.x} y={snake.y} width={ITEM_SIZE} height={ITEM_SIZE}
+                    x={snake.x} y={snake.y} width={ITEM_SIZE} height={ITEM_SIZE} stroke="black"
                     fill="gray"
                 />
             );

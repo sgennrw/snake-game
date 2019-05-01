@@ -11,14 +11,14 @@ import Food from '../food/index';
 import './style.css';
 
 const props = {
-    changeDirection: PropTypes.func.isRequired,
+    onMove: PropTypes.func.isRequired,
 }
 
 const Canvas = props => {
-    const { changeDirection } = props;
+    const { onMove } = props;
 
     const onKeyPressed = e => {
-        changeDirection(e.key);
+        onMove(e.key);
         e.preventDefault();
     }
 
