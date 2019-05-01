@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import React from 'react';
 import { ReactReduxContext, Provider } from "react-redux";
-import { Stage, Layer } from 'react-konva';
+import { Stage, Layer, Text } from 'react-konva';
 import PropTypes from 'prop-types';
 import { WINDOW_SIZE } from '../../constants';
 
@@ -12,10 +12,11 @@ import './style.css';
 
 const props = {
     onMove: PropTypes.func.isRequired,
+    isGameOver: PropTypes.bool.isRequired,
 }
 
 const Canvas = props => {
-    const { onMove } = props;
+    const { onMove, isGameOver } = props;
 
     const onKeyPressed = e => {
         onMove(e.key);
@@ -35,6 +36,7 @@ const Canvas = props => {
                             <Layer>
                                 <Snake />
                                 <Food />
+                                {isGameOver && <Text text="Game Over" fontSize={16}/>}
                             </Layer>
                         </Provider>
                     </Stage>

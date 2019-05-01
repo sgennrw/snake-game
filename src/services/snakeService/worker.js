@@ -29,6 +29,12 @@ export function* watchMoveRequest(action) {
         newPos.x = moveAcrossWindowSize(newPos.x);
         newPos.y = moveAcrossWindowSize(newPos.y);
 
+        // not allow snake to move backward
+        if(snakePos.length > 1 && newPos.x === snakePos[1].x && newPos.y === snakePos[1].y) {
+            return yield put(actions.moveFailure());
+        }
+
+        // re position of each snake's point
         let newSnakePos = [newPos];
         let isDeath = false;
         snakePos.forEach((pos, index) => {
