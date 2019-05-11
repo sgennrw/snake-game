@@ -8,6 +8,8 @@ const initialState = {
         {x: randomLocation(), y: randomLocation()}
     ],
     foodPos: {x: randomLocation(), y: randomLocation()},
+    currentScore: 0,
+    highestScore: 0,
     isGameOver: false,
 };
 
@@ -29,10 +31,27 @@ const snakeServiceReducer = (state = initialState, action) => {
                 ...state,
                 snakePos: action.snakePos,
             }
+        case actionTypes.UPDATE_SCORE:
+            return {
+                ...state,
+                ...state.currentScore++,
+            }
         case actionTypes.DIE:
             return {
                 ...state,
                 isGameOver: true,
+                highestScore: state.currentScore > state.highestScore ? state.currentScore : state.highestScore,
+            }
+        case actionTypes.RESET:
+            return {
+                ...state,
+                key: '',
+                snakePos: [
+                    {x: randomLocation(), y: randomLocation()}
+                ],
+                foodPos: {x: randomLocation(), y: randomLocation()},
+                currentScore: 0,
+                isGameOver: false,
             }
         default:
             return state

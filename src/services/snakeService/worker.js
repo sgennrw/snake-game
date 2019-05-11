@@ -70,6 +70,7 @@ export function* watchEatFood(action) {
     const { snakePos } = yield select(state => state.snakeServiceReducer);
     snakePos.push(action.snakeTailPos);
     yield put(actions.growUp(snakePos));
+    yield put(actions.updateScore());
 }
 
 const moveAcrossWindowSize = pos => {

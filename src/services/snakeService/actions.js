@@ -35,8 +35,20 @@ export const growUp = snakePos => {
     }
 }
 
+export const updateScore = () => {
+    return {
+        type: actionTypes.UPDATE_SCORE,
+    }
+}
+
 export const die = () => {
     return {
         type: actionTypes.DIE,
+    }
+}
+
+export const reset = () => {
+    return {
+        type: actionTypes.RESET,
     }
 }
